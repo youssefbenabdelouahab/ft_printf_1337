@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yben-abd <yben-abd@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/04 13:17:20 by yben-abd          #+#    #+#             */
+/*   Updated: 2026/11/04 14:26:35 by yben-abd         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int str_len(char *s)
+static int	str_len(char *s)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (s[len])
@@ -13,8 +24,8 @@ static int str_len(char *s)
 
 int	print_str(char *s)
 {
-	int len;
-	int ret;
+	int	len;
+	int	ret;
 
 	if (!s)
 	{

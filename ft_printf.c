@@ -1,8 +1,21 @@
-include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yben-abd <yben-abd@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/04 13:17:34 by yben-abd          #+#    #+#             */
+/*   Updated: 2026/11/04 14:29:47 by yben-abd         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_printf(const char *format, ...)
+#include "ft_printf.h"
+
+int	ft_printf(const char *format, ...)
 {
-	va_list ap;
+	va_list	ap;
+
 	va_start(ap, format);
 	va_end(ap);
 	return (0);

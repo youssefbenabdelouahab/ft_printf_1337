@@ -1,47 +1,47 @@
-#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_nbr.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yben-abd <yben-abd@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/04 13:17:13 by yben-abd          #+#    #+#             */
+/*   Updated: 2026/11/04 14:29:04 by yben-abd         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "ft_printf.h"
+#include <limits.h>
 
 int	print_nbr(int n)
 {
-	int count;
-	char c;
+	int		count;
+	char	c;
 
 	count = 0;
 	if (n == -2147483648)
-	{
-		count = write(1, "-2147483648", 11);
-		return (count);
-	}
+		return (write(1, "-2147483648", 11));
 	if (n < 0)
 	{
 		count += write(1, "-", 1);
 		n = -n;
 	}
 	if (n >= 10)
-	{
-		print_nbr(n / 10);
-		print_nbr(n % 10);
-	}
-	c = n + '0';
+		count += print_nbr(n / 10);
+	c = (n % 10) + '0';
 	count += write(1, &c, 1);
-	return(count);
+	return (count);
 }
 
-// int print_unbr(unsigned int n)
-// {
-	
-// }
-
-
-int main()
+int	print_unbr(unsigned int n)
 {
-	int a = print_nbr(297);
-	int b = print_nbr(0);
-	int c = print_nbr(-2147483648);
-	int d = print_nbr(-123456789);
+	int		count;
+	char	c;
 
-	printf("%d\n", a);
-	printf("%d\n", b);
-	printf("%d\n", c);
-	printf("%d\n", d);
+	count = 0;
+	if (n >= 10)
+		count += print_nbr(n / 10);
+	c = (n % 10) + '0';
+	count += write(1, &c, 1);
+	return (count);
 }
