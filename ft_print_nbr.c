@@ -6,12 +6,11 @@
 /*   By: yben-abd <yben-abd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 13:17:13 by yben-abd          #+#    #+#             */
-/*   Updated: 2026/11/04 14:29:04 by yben-abd         ###   ########.fr       */
+/*   Updated: 2026/11/04 17:36:43 by yben-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <limits.h>
 
 int	print_nbr(int n)
 {

@@ -11,7 +11,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	ar rcs $(NAME) $?
 
 %.o: %.c ft_printf.h
 	$(CC) $(CFLAGS) -c $< -o $@
