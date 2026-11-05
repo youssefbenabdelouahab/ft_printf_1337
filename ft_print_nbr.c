@@ -39,7 +39,7 @@ int	print_unbr(unsigned int n)
 
 	count = 0;
 	if (n >= 10)
-		count += print_nbr(n / 10);
+		count += print_unbr(n / 10);
 	c = (n % 10) + '0';
 	count += write(1, &c, 1);
 	return (count);
