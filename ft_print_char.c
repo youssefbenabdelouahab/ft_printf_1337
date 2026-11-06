@@ -6,18 +6,20 @@
 /*   By: yben-abd <yben-abd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 13:17:03 by yben-abd          #+#    #+#             */
-/*   Updated: 2026/11/04 13:20:54 by yben-abd         ###   ########.fr       */
+/*   Updated: 2026/11/06 19:10:02 by yben-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	printchar(int c)
+void	printchar(int c, int *counter)
 {
-	return (write(1, &c, 1));
+	write(1, &c, 1);
+	(*counter)++;
 }
 
-int	print_percent(void)
+void	print_percent(int *counter)
 {
-	return (write(1, "%", 1));
+	write(1, "%", 1);
+	(*counter)++;
 }

@@ -6,7 +6,7 @@
 /*   By: yben-abd <yben-abd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 13:17:20 by yben-abd          #+#    #+#             */
-/*   Updated: 2026/11/04 14:26:35 by yben-abd         ###   ########.fr       */
+/*   Updated: 2026/11/06 16:58:50 by yben-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,16 @@ static int	str_len(char *s)
 	return (len);
 }
 
-int	print_str(char *s)
+void	print_str(char *s, int *counter)
 {
 	int	len;
-	int	ret;
 
 	if (!s)
 	{
-		ret = write(1, "(null)", 6);
-		return (ret);
+		write(1, "(null)", 6);
+		*counter = 6;
 	}
 	len = str_len(s);
-	ret = write(1, s, len);
-	return (ret);
+	write(1, s, len);
+	(*counter) += len;
 }

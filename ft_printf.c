@@ -6,54 +6,61 @@
 /*   By: yben-abd <yben-abd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 13:17:34 by yben-abd          #+#    #+#             */
-/*   Updated: 2026/11/06 12:05:57 by yben-abd         ###   ########.fr       */
+/*   Updated: 2026/11/06 19:20:25 by yben-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int handler(char c, va_list *args)
+static int	is_type(char c)
 {
-    int count;
-
-    count = 0;
-    if (c == 'd' || c == 'i')
-        count += print_nbr(va_arg(*args, int));
-    else if (c == 'x' || c == 'X')
-        count += print_hex(va_arg(*args, unsigned int), c);
-    else if (c == 'u')
-        count += print_unbr(va_arg(*args, unsigned int));
-    else if (c == 'c')
-        count += printchar(va_arg(*args, int));
-    else if (c == '%')
-        count += print_percent();
-    else if (c == 'p')
-        count += print_ptr(va_arg(*args, void *));
-    else if (c == 's')
-        count += print_str(va_arg(*args, char *));
-    return (count);
+	return (c == 'd' || c == 'i' || c == 'x'
+		|| c == 'X' || c == 'u' || c == '%'
+		|| c == 's' || c == 'c' || c == 'p');
 }
 
-int		ft_printf(const char *format, ...)
+static void	handler(char c, va_list *args, int *counter)
 {
-    va_list ap;
-    int i;
-    int count;
+	if (c == 'd' || c == 'i')
+		print_nbr(va_arg(*args, int), counter);
+	else if (c == 'x' || c == 'X')
+		print_hex(va_arg(*args, unsigned int), c, counter);
+	else if (c == 'u')
+		print_unbr(va_arg(*args, unsigned int), counter);
+	else if (c == 'c')
+		printchar(va_arg(*args, int), counter);
+	else if (c == '%')
+		print_percent(counter);
+	else if (c == 'p')
+		print_ptr(va_arg(*args, void *), counter);
+	else if (c == 's')
+		print_str(va_arg(*args, char *), counter);
+}
 
-    i = 0;
-    count = 0;
-    va_start(ap, format);
-    while (format[i])
-    {
-        if (format[i] == '%')
-        {
-            count += handler(format[i + 1], &ap);
-            i++;
-        }
-        else
-            printchar(format[i]);
-        i++;
-    }
-    va_end(ap);
-    return (count);
+int	ft_printf(const char *format, ...)
+{
+	va_list	ap;
+	int		i;
+	int		counter;
+
+	if (!format)
+		return (-1);
+	i = 0;
+	counter = 0;
+	va_start(ap, format);
+	if (format[0] == '%' && format[1] == '\0')
+		return (-1);
+	while (format[i])
+	{
+		if (format[i] == '%' && is_type(format[i + 1]))
+		{
+			handler(format[i + 1], &ap, &counter);
+			i++;
+		}
+		else
+			printchar(format[i], &counter);
+		i++;
+	}
+	va_end(ap);
+	return (counter);
 }

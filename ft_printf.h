@@ -6,7 +6,7 @@
 /*   By: yben-abd <yben-abd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 13:17:39 by yben-abd          #+#    #+#             */
-/*   Updated: 2026/11/06 12:13:43 by yben-abd         ###   ########.fr       */
+/*   Updated: 2026/11/06 19:09:29 by yben-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 # include <unistd.h>
 
 int		ft_printf(const char *format, ...);
-int		print_percent(void);
-int		printchar(int c);
-int		print_str(char *s);
-int		print_nbr(int n);
-int		print_unbr(unsigned int n);
-int		print_hex(unsigned int n, char conv);
-int		print_ptr(void *p);
+void	print_percent(int *counter);
+void	printchar(int c, int *counter);
+void	print_str(char *s, int *counter);
+void	print_nbr(int n, int *counter);
+void	print_unbr(unsigned int n, int *counter);
+void	print_hex(unsigned int n, char conv, int *counter);
+void	print_ptr(void *p, int *counter);
 
 #endif
