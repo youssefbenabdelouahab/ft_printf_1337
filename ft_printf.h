@@ -6,7 +6,7 @@
 /*   By: yben-abd <yben-abd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 13:17:39 by yben-abd          #+#    #+#             */
-/*   Updated: 2026/11/04 17:46:18 by yben-abd         ###   ########.fr       */
+/*   Updated: 2026/11/06 12:13:43 by yben-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include <stdio.h>
 
 int		ft_printf(const char *format, ...);
 int		print_percent(void);
