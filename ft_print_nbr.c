@@ -6,7 +6,7 @@
 /*   By: yben-abd <yben-abd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 12:47:57 by yben-abd          #+#    #+#             */
-/*   Updated: 2026/11/07 13:29:05 by yben-abd         ###   ########.fr       */
+/*   Updated: 2026/11/07 14:25:33 by yben-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	print_unbr(unsigned int n, int *counter)
 {
 	char	c;
 
-	if (n > 10)
+	if (n >= 10)
 		print_unbr((n / 10), counter);
 	c = (n % 10) + '0';
 	write(1, &c, 1);

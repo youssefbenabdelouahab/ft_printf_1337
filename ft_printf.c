@@ -6,7 +6,7 @@
 /*   By: yben-abd <yben-abd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 12:38:30 by yben-abd          #+#    #+#             */
-/*   Updated: 2026/11/07 13:31:45 by yben-abd         ###   ########.fr       */
+/*   Updated: 2026/11/07 14:19:06 by yben-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	while (*format)
 	{
-		if ((*format) == '%' && is_type((*format + 1)))
+		if ((*format) == '%' && is_type(*(format + 1)))
 		{
-			handler((*format + 1), &ap, &counter);
+			handler(*(format + 1), &ap, &counter);
 			format++;
 		}
 		else
