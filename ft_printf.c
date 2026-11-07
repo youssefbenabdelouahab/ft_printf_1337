@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yben-abd <yben-abd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/04 13:17:34 by yben-abd          #+#    #+#             */
-/*   Updated: 2026/11/07 11:38:59 by yben-abd         ###   ########.fr       */
+/*   Created: 2026/11/07 12:38:30 by yben-abd          #+#    #+#             */
+/*   Updated: 2026/11/07 19:45:55 by yben-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,51 @@
 
 static int	is_type(char c)
 {
-	return (c == 'd' || c == 'i' || c == 'x'
-		|| c == 'X' || c == 'u' || c == '%'
-		|| c == 's' || c == 'c' || c == 'p');
+	return (c == 'c' || c == 'd' || c == 'i'
+		|| c == '%' || c == 'u'
+		|| c == 'x' || c == 'X'
+		|| c == 'p' || c == 's');
 }
 
-static void	handler(char c, va_list *args, int *counter)
+static void	handler(char c, va_list *ap, int *counter)
 {
-	if (c == 'd' || c == 'i')
-		print_nbr(va_arg(*args, int), counter);
-	else if (c == 'x' || c == 'X')
-		print_hex(va_arg(*args, unsigned int), c, counter);
-	else if (c == 'u')
-		print_unbr(va_arg(*args, unsigned int), counter);
-	else if (c == 'c')
-		printchar(va_arg(*args, int), counter);
+	if (c == 'c')
+		print_char(va_arg(*ap, int), counter);
 	else if (c == '%')
 		print_percent(counter);
+	else if (c == 'i' || c == 'd')
+		print_nbr(va_arg(*ap, int), counter);
+	else if (c == 'x' || c == 'X')
+		print_hex(va_arg(*ap, unsigned int), c, counter);
+	else if (c == 'u')
+		print_unbr(va_arg(*ap, unsigned int), counter);
 	else if (c == 'p')
-		print_ptr(va_arg(*args, void *), counter);
+		print_ptr(va_arg(*ap, void *), counter);
 	else if (c == 's')
-		print_str(va_arg(*args, char *), counter);
+		print_str(va_arg(*ap, char *), counter);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	int		i;
 	int		counter;
 
+	counter = 0;
 	if (!format)
 		return (-1);
-	i = 0;
-	counter = 0;
 	va_start(ap, format);
-	while (format[i])
+	while (*format)
 	{
-		if (format[i] == '%' && is_type(format[i + 1]))
+		if ((*format) == '%' && is_type(*(format + 1)))
 		{
-			handler(format[i + 1], &ap, &counter);
-			i++;
+			handler(*(format + 1), &ap, &counter);
+			format++;
 		}
 		else
-			printchar(format[i], &counter);
-		i++;
+		{
+			print_char(*format, &counter);
+		}
+		format++;
 	}
 	va_end(ap);
 	return (counter);
