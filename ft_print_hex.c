@@ -6,7 +6,7 @@
 /*   By: yben-abd <yben-abd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 13:17:09 by yben-abd          #+#    #+#             */
-/*   Updated: 2026/11/06 19:11:12 by yben-abd         ###   ########.fr       */
+/*   Updated: 2026/11/07 11:59:19 by yben-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	print_ptr(void *p, int *counter)
 	{
 		write(1, "(nil)", 5);
 		*counter += 5;
+		return ;
 	}
 	write(1, "0x", 2);
 	*counter += 2;
